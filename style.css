@@ -8,6 +8,26 @@
   --shadow: rgba(59, 42, 32, 0.18);
 }
 
+html[data-theme="espresso"] {
+  --coffee-dark: #f4e9dc;
+  --coffee: #d9a441;
+  --coffee-light: #c9a877;
+  --terracotta: #e08a4f;
+  --cream: #1c130d;
+  --cream-soft: #241a12;
+  --shadow: rgba(0, 0, 0, 0.45);
+}
+
+html[data-theme="cappuccino"] {
+  --coffee-dark: #4a342a;
+  --coffee: #a5642f;
+  --coffee-light: #a98868;
+  --terracotta: #e0a878;
+  --cream: #fff8f0;
+  --cream-soft: #fffdfa;
+  --shadow: rgba(181, 114, 58, 0.18);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -18,12 +38,13 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   color: var(--coffee-dark);
   background:
-    radial-gradient(circle at 15% 20%, rgba(193, 103, 59, 0.15), transparent 40%),
-    radial-gradient(circle at 85% 80%, rgba(111, 78, 55, 0.18), transparent 45%),
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--terracotta) 15%, transparent), transparent 40%),
+    radial-gradient(circle at 85% 80%, color-mix(in srgb, var(--coffee) 18%, transparent), transparent 45%),
     var(--cream);
   display: flex;
   justify-content: center;
   padding: 32px 16px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .page {
@@ -59,6 +80,43 @@ body {
   font-size: 1rem;
 }
 
+.theme-switcher {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.theme-swatch {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  padding: 0;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.theme-swatch:hover {
+  transform: scale(1.1);
+}
+
+.theme-swatch[aria-pressed="true"] {
+  border-color: var(--coffee-dark);
+}
+
+.theme-swatch[data-theme-option="torrado"] {
+  background: #6f4e37;
+}
+
+.theme-swatch[data-theme-option="espresso"] {
+  background: #d9a441;
+}
+
+.theme-swatch[data-theme-option="cappuccino"] {
+  background: #a5642f;
+}
+
 main {
   width: 100%;
   display: flex;
@@ -70,12 +128,13 @@ main {
 .review-card {
   width: 100%;
   background: var(--cream-soft);
-  border: 1px solid rgba(111, 78, 55, 0.15);
+  border: 1px solid color-mix(in srgb, var(--coffee) 15%, transparent);
   border-radius: 18px;
   padding: 32px 28px;
   box-shadow: 0 18px 40px var(--shadow);
   position: relative;
   overflow: hidden;
+  transition: background-color 0.2s ease;
 }
 
 .review-card::before {
@@ -122,7 +181,7 @@ main {
 .btn-primary {
   background: var(--coffee);
   color: var(--cream-soft);
-  box-shadow: 0 10px 20px rgba(111, 78, 55, 0.35);
+  box-shadow: 0 10px 20px color-mix(in srgb, var(--coffee) 35%, transparent);
 }
 
 .btn-primary:hover {
@@ -136,7 +195,7 @@ main {
 }
 
 .btn-secondary:hover {
-  background: rgba(111, 78, 55, 0.08);
+  background: color-mix(in srgb, var(--coffee) 8%, transparent);
 }
 
 .btn-secondary.copied {

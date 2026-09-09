@@ -122,6 +122,43 @@
   const reviewText = document.getElementById('reviewText');
   const generateBtn = document.getElementById('generateBtn');
   const copyBtn = document.getElementById('copyBtn');
+  const themeSwatches = document.querySelectorAll('.theme-swatch');
+
+  const THEMES = ['torrado', 'espresso', 'cappuccino'];
+  const THEME_STORAGE_KEY = 'coffeeomatic-theme';
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    themeSwatches.forEach((swatch) => {
+      swatch.setAttribute('aria-pressed', String(swatch.dataset.themeOption === theme));
+    });
+  }
+
+  function storeTheme(theme) {
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, theme);
+    } catch (err) {
+      // localStorage indisponível (modo privado, etc.) — tema simplesmente não persiste
+    }
+  }
+
+  function initTheme() {
+    let stored = null;
+    try {
+      stored = localStorage.getItem(THEME_STORAGE_KEY);
+    } catch (err) {
+      stored = null;
+    }
+    applyTheme(THEMES.includes(stored) ? stored : 'torrado');
+  }
+
+  themeSwatches.forEach((swatch) => {
+    swatch.addEventListener('click', () => {
+      const theme = swatch.dataset.themeOption;
+      applyTheme(theme);
+      storeTheme(theme);
+    });
+  });
 
   function renderNewReview() {
     reviewText.textContent = generateReview();
@@ -168,6 +205,8 @@
 
   generateBtn.addEventListener('click', renderNewReview);
   copyBtn.addEventListener('click', copyReview);
+
+  initTheme();
 
   document.addEventListener('DOMContentLoaded', renderNewReview);
   if (document.readyState !== 'loading') {

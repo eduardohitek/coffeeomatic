@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee-o-Matic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <span class="bean-icon" aria-hidden="true">☕</span>
+      <h1>Coffee-o-Matic</h1>
+      <p class="subtitle">Gerador de avaliações de café. Clique, copie e cole.</p>
+    </header>
+
+    <main>
+      <section class="review-card" aria-live="polite">
+        <p id="reviewText">Preparando sua avaliação...</p>
+      </section>
+
+      <div class="actions">
+        <button id="generateBtn" class="btn btn-primary" type="button">☕ Gerar nova avaliação</button>
+        <button id="copyBtn" class="btn btn-secondary" type="button">Copiar</button>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>Coffee-o-Matic &mdash; cada avaliação é única (mais ou menos).</p>
+      <p>Desenvolvido por <a href="https://eduardohitek.dev">Eduardo Hitek</a></p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

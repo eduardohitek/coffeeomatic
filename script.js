@@ -20,10 +20,10 @@
   const fragranciaBank = [
     'floral, lembrando jasmim e flor de laranjeira',
     'intensamente frutada, com toques de frutas vermelhas',
-    'adocicada, com notas de chocolate ao leite',
+    'adocicada, lembrando chocolate ao leite',
     'amadeirada e levemente especiada',
     'herbal, com um toque de ervas frescas',
-    'convidativa, com aromas de cacau torrado',
+    'convidativa, com toques de cacau torrado',
   ];
 
   const aromaBank = [
